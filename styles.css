@@ -43,7 +43,7 @@ body {
   background-color: var(--color1);
   color: white;
   padding: 24px 32px;
-  font-size: 22px;
+  font-size: 18px;
   border: none;
   border-radius: 16px;
   transition: all 100ms ease-in-out;
@@ -75,4 +75,27 @@ body {
 .joke-text {
   font-family: var(--myFont);
   color: white;
+}
+
+/* Loader */
+
+.loader {
+  /* background: rgba(71, 71, 71, 0.2); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader p {
+  color: white;
+  font-family: var(--myFont);
+  font-size: 1rem;
+}
+
+.loader img {
+  width: 50px;
+  height: 50px;
+}
+
+.hide {
+  display: none;
 }
