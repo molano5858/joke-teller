@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --myFont: "Figtree", sans-serif;
+  --color1: #ff2d78;
+  --color2: #3db1d9;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #45badd;
+}
+
+.header-container {
+  height: 40vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-image: url("./robot.gif");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.container {
+  height: 50vh;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+#button {
+  cursor: pointer;
+  font-family: var(--myFont);
+  background-color: var(--color1);
+  color: white;
+  padding: 24px 32px;
+  font-size: 22px;
+  border: none;
+  border-radius: 16px;
+  transition: all 100ms ease-in-out;
+  font-weight: 500;
+}
+
+#button:hover {
+  background-color: #ff0059;
+  box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.16);
+}
+#button:active {
+  transform: translateY(8px);
+  background-color: #d82161;
+}
+
+.joke-container {
+  box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0);
+  background-color: rebeccapurple;
+  padding: 16px 32px;
+  border-radius: 16px;
+  margin: 16px;
+  max-width: 400px;
+}
+
+.joke-container-inactive {
+  display: none;
+}
+
+.joke-text {
+  font-family: var(--myFont);
+  color: white;
+}
