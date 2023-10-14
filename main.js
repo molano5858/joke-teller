@@ -7,19 +7,23 @@ const jokeContainer = document.getElementById("joke-container");
 const apiUrl =
   "https://v2.jokeapi.dev/joke/Programming,Christmas?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=twopart";
 
-// API TEXT TO SPEECH
+// Enable / Disable button while telling the joke
 
+function toggleButton() {
+  button.disabled = !button.disabled;
+}
+
+// API TEXT TO SPEECH
 let respuestaApi = false;
 
 function verificarRespuestaApi() {
   if (respuestaApi) {
     console.log(respuestaApi);
+    clearInterval(intervalo);
   } else {
     console.log(respuestaApi);
   }
 }
-
-let intervalo = setInterval(verificarRespuestaApi, 200);
 
 async function textToSpeech(joke) {
   const url = `https://text-to-speech-api3.p.rapidapi.com/speak?text=${joke}&lang=en`;
@@ -49,8 +53,10 @@ async function textToSpeech(joke) {
   }
 }
 
+// get jokes from the api
 async function getJoke() {
   try {
+    let intervalo = setInterval(verificarRespuestaApi, 200);
     loader.classList.remove("hide");
     loaderJoke.classList.remove("hide");
     jokeContainer.innerHTML = "";
@@ -62,6 +68,7 @@ async function getJoke() {
     let data = await response.json();
     if (response.status === 200) {
       loaderJoke.classList.add("hide");
+      clearInterval(intervalo);
     }
 
     joke1.textContent = data.setup;
@@ -77,10 +84,14 @@ async function getJoke() {
       jokeContainer.classList.remove("joke-container-inactive");
       jokeContainer.classList.add("joke-container");
     }
+    // Send text to Api to receive the audio
     textToSpeech(completeJoke);
+    // Disable / enable the button while robot it´s talking
+    toggleButton();
   } catch (error) {
     console.log("Whoooops, ", error);
   }
 }
 
 button.addEventListener("click", getJoke);
+audioElement.addEventListener("ended", toggleButton);
